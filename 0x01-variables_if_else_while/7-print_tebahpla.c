@@ -6,7 +6,7 @@
 
 int main(void)
 {
-	char c ;
+	char c;
 
 	c = 'z';
 	while
