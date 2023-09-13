@@ -5,7 +5,8 @@
  * Return: Always 0
  */
 
-int main() {
+int main() 
+{
     long long a = 1, b = 2, even_sum = 0;
     long long limit = 4000000;
 
@@ -13,9 +14,10 @@ int main() {
         if (a % 2 == 0) {
             even_sum += a;
         }
-        long long next = a + b;
+
+        long long temp = a;
         a = b;
-        b = next;
+        b += temp;
     }
 
     printf("%lld\n", even_sum);
