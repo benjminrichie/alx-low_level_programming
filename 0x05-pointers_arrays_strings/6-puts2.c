@@ -14,7 +14,6 @@ void puts2(char *str)
 	char *y = str;
 	int o;
 
-i
 	while (*y != '\0')
 	{
 		y++;
