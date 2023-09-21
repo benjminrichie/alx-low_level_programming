@@ -5,7 +5,7 @@
  * by using atmost n bytes from src
  * @dest: input
  * @src: input
- * @n input value
+ * @n: input value
  * Return: dest
  */
 char *_strncat(char *dest, char *src, int n)
