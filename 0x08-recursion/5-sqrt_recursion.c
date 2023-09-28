@@ -1,11 +1,10 @@
 #include "main.h"
 
 /**
- *sqrt_a - return the returns the natural square root of a number
- *
+ * sqrt_a - return the natural square root of
+ * a number
  * @a: number
  * @b: iterator
- *
  * Return: square root or -1
  */
 
@@ -15,19 +14,19 @@ int sqrt_a(int a, int b)
 	{
 		return (b);
 	}
-	else if (b * b > 4)
+	else if (b * b > a)
 	{
 		return (-1);
 	}
 	return (sqrt_a(a, b + 1));
 }
 /**
- * _sqrt_recursion - function that returns square of natural numbers
- * @n: input
+ * _sqrt_recursion - returns the natural square of roots of
+ * a number
+ * @n: the input number
  * Return: natural square root
  */
-
-int _sqrt_recurision(int n)
+int _sqrt_recursion(int n)
 {
 	return (sqrt_a(n, 0));
 }
