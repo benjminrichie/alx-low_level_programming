@@ -42,3 +42,28 @@ int _atoi(char *s)
 		return (0);
 	return (n);
 }
+
+/**
+ * main - this will multiply two numbers
+ * @argc: this is the number of arguments
+ * @argv: this is the array of arguments
+ *
+ * Return: 0 (Success) else 1 (Error)
+ */
+
+int main(int argc, char *argv[])
+{
+	int result, numx, numy;
+
+	if (argc < 3 || argc > 3)
+	{
+		printf("Error\n");
+		return (1);
+	}
+	numx = _atoi(argv[1]);
+	numy = _atoi(argv[2]);
+	result = numx * numy;
+	printf("%d\n", result);
+
+	return (0);
+}
