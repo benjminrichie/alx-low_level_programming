@@ -30,8 +30,8 @@ int **alloc_grid(int width, int height)
 		if (grid_out[a] == NULL)
 		{
 			for (a--; a >= 0; a--)
-			free(grid_out);
 			free(grid_out[a]);
+			free(grid_out);
 			return (NULL);
 		}
 	}
