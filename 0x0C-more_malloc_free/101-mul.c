@@ -5,7 +5,7 @@
 #define ERR_MSG "Error"
 
 /**
- * is_digit - This function will check if a string has a non digit character
+ * is_digit - This function will check if a string has a non digit character.
  * @s: This is the string
  * Return: If non digit, return 0 else return 1
  */
