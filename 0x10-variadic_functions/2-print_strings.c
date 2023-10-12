@@ -1,5 +1,5 @@
 #include "variadic_functions.h"
-#include <stdarg.>
+#include <stdarg.h>
 #include <stdio.h>
 
 /**
@@ -19,7 +19,7 @@ void print_strings(const char *separator, const unsigned int n, ...)
 	unsigned int w;
 
 	va_start(strings, n);
-	for (w = 0; w < n, w++)
+	for (w = 0; w < n; w++)
 	{
 		str = va_arg(strings, char *);
 		if (str == NULL)
