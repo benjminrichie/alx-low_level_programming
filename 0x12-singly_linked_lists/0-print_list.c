@@ -10,12 +10,12 @@
 
 size_t print_list(const list_t *h)
 {
-	size_t r;
+	size_t benNode;
 
 	if (h == NULL)
 		return (0);
 
-	for (r = 1; h->next != NULL; r++)
+	for (benNode = 1; h->next != NULL; benNode++)
 	{
 		if (h->str == NULL)
 		{
@@ -28,5 +28,5 @@ size_t print_list(const list_t *h)
 		h = h->next;
 	}
 	printf("[%u] %s\n", h->len, h->str);
-	return (r);
+	return (benNode);
 }
