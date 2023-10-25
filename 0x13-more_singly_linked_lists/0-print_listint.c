@@ -12,12 +12,13 @@
 
 size_t print_listint(const listint_t *h)
 {
-	size_t myProjectNodes;
+	size_t myProjectNodes = 0;
 
-	for (myProjectNodes = 0; h != NULL; myProjectNodes++)
+	while (h != NULL)
 	{
 		printf("%d\n", h->n);
 		h = h->next;
+		myProjectNodes++;
 	}
 	return (myProjectNodes);
 }
