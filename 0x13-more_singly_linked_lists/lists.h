@@ -18,7 +18,9 @@ typedef struct listint_s
 } listint_t;
 
 /**
- * This is the prototype section
+ * _putchar - This is just a custom function
+ * @c: this is a character
+ * Return: input
  */
 
 int _putchar(char c);
