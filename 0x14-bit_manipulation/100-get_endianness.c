@@ -12,6 +12,6 @@ int get_endianness(void)
 	char *b4Little;
 
 	a4Big = 1;
-	b4Little =(char *)&a;
-	return (*b);
+	b4Little = (char *)&a4Big;
+	return (*b4Little);
 }
