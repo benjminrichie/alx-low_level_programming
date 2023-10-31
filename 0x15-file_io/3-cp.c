@@ -61,7 +61,7 @@ void IO_CHECK(int My_stat, int Bens_fd, char *filename, char The_mode)
 {
 	if (The_mode == 'C' && My_stat == -1)
 	{
-		dprintf(STDERR_FILENO, "Error: Cant't close fd %d\n", Bens_fd);
+		dprintf(STDERR_FILENO, "Error: Can't close fd %d\n", Bens_fd);
 		exit(100);
 	}
 	else if (The_mode == 'O' && My_stat == -1)
