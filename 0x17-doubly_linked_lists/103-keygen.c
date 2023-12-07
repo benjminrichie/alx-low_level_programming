@@ -1,49 +1,142 @@
 #include <stdio.h>
-#include <string.h>
 #include <stdlib.h>
+#include <time.h>
 
 /**
- * mainBen - This func will generate a key depending on a
- * username for crackme5
+ * f4 - This func finds the biggest number
  *
- * @argc: This is the number of arguments passed
+ * @usrn: This is the username
  *
- * @argv: This is the arguments passed to mainBen
+ * @len: This is the length of username
  *
- * Return: 0 (SUCCESS) else, 1 (ERROR)
+ * Return: biggest number
+ *
  */
 
-int mainBen(int argc, char *argv[])
+int f4(char *usrn, int len)
 {
-	unsigned int item, ben;
-	size_t len, addMe;
-	char *l = "A-CHRDw87lNS0E9B2TibgpnMVys5XzvtOGJcYLU+4mjW6fxqZeF3Qa1rPhdKIouk";
-	char p[7] = "      ";
+	int ch;
+	int vch;
+	unsigned int rand_num;
 
-	if (argc != 2)
+	ch = *usrn;
+	vch = 0;
+
+	while (vch < len)
 	{
-		printf("Correct usage: ./keygen5 username\n");
-		return (1);
+		if (ch < usrn[vch])
+			ch = usrn[vch];
+		vch += 1;
 	}
-	len = strlen(argv[1]);
-	p[0] = l[(len ^ 59) & 63];
-	for (item = 0, addMe = 0; item < len; item++)
-		addMe += argv[1][item];
-	p[1] = l[(addMe ^ 79) & 63];
-	for (item = 0, ben = 1; item < len; item++)
-		ben *= argv[1][item];
-	p[2] = l[(ben ^ 85) & 63];
-	for (ben = argv[1][0], item = 0; item < len; item++)
-		if ((char)ben <= argv[1][item])
-			ben = argv[1][item];
-	srand(ben ^ 14);
-	p[3] = l[rand() & 63];
-	for (ben = 0, item = 0; item < len; item++)
-		ben += argv[1][item] * argv[1][item];
-	p[4] = l[(ben ^ 239) & 63];
-	for (ben = 0, item = 0; (char)item < argv[1][0]; item++)
-		ben = rand();
-	p[5] = l[(ben ^ 229) & 63];
-	printf("%s\n", p);
+
+	srand(ch ^ 14);
+	rand_num = rand();
+
+	return (rand_num & 63);
+}
+
+/**
+ * f5 - This func simply multiplies each char of username
+ *
+ * @usrn: This is the username
+ *
+ * @len: Represents length of username
+ *
+ * Return: char
+ *
+ */
+
+int f5(char *usrn, int len)
+{
+	int ch;
+	int vch;
+
+	ch = vch = 0;
+
+	while (vch < len)
+	{
+		ch = ch + usrn[vch] * usrn[vch];
+		vch += 1;
+	}
+
+	return (((unsigned int)ch ^ 239) & 63);
+}
+
+/**
+ * f6 - This func will generate a random char
+ *
+ * @usrn: Represents the username
+ *
+ * Return: char
+ *
+ */
+
+int f6(char *usrn)
+{
+	int ch;
+	int vch;
+
+	ch = vch = 0;
+
+	while (vch < *usrn)
+	{
+		ch = rand();
+		vch += 1;
+	}
+
+	return (((unsigned int)ch ^ 229) & 63);
+}
+
+/**
+ * main - This is the entry point of the prog.
+ *
+ * @argc: Represents arguments count
+ *
+ * @argv: Represents arguments vector
+ *
+ * Return: 0 (Always)
+ *
+ */
+
+int main(int argc, char **argv)
+{
+	char keygen[7];
+	int len, ch, vch;
+	long alph[] = {
+		0x3877445248432d41, 0x42394530534e6c37, 0x4d6e706762695432,
+		0x74767a5835737956, 0x2b554c59634a474f, 0x71786636576a6d34,
+		0x723161513346655a, 0x6b756f494b646850 };
+	(void) argc;
+
+	for (len = 0; argv[1][len]; len++)
+		;
+	/* ----------- f1 ----------- */
+	keygen[0] = ((char *)alph)[(len ^ 59) & 63];
+	/* ----------- f2 ----------- */
+	ch = vch = 0;
+	while (vch < len)
+	{
+		ch = ch + argv[1][vch];
+		vch = vch + 1;
+	}
+	keygen[1] = ((char *)alph)[(ch ^ 79) & 63];
+	/* ----------- f3 ----------- */
+	ch = 1;
+	vch = 0;
+	while (vch < len)
+	{
+		ch = argv[1][vch] * ch;
+		vch = vch + 1;
+	}
+	keygen[2] = ((char *)alph)[(ch ^ 85) & 63];
+	/* ----------- f4 ----------- */
+	keygen[3] = ((char *)alph)[f4(argv[1], len)];
+	/* ----------- f5 ----------- */
+	keygen[4] = ((char *)alph)[f5(argv[1], len)];
+	/* ----------- f6 ----------- */
+	keygen[5] = ((char *)alph)[f6(argv[1])];
+	keygen[6] = '\0';
+	for (ch = 0; keygen[ch]; ch++)
+		printf("%c", keygen[ch]);
 	return (0);
 }
