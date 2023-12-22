@@ -2,11 +2,11 @@
 
 /**
  * hash_table_create - This func will create a hash table.
- * 
+ *
  * @size: Array size.
  *
  * Return: NULL (ERROR) else a pointer to the new hash table.
- * 
+ *
  */
 
 hash_table_t *hash_table_create(unsigned long int size)
